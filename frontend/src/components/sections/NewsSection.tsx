@@ -95,7 +95,7 @@ const NewsSection = () => {
 
     return (
         <div className="h-full flex flex-col">
-            <h2 className="text-2xl font-semibold mb-4">Latest News</h2>
+            <h2 className="text-2xl font-semibold mb-4">Latest Threats</h2>
             <div className="flex flex-col flex-1 min-h-0">
                 <div className="relative mb-4">
                     <Input

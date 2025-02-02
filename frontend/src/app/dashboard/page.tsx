@@ -45,10 +45,11 @@ export default function Dashboard() {
       {/* Weather Map Section */}
       <section className="rounded-lg border bg-card overflow-hidden">
         <div className="p-6">
-          <h2 className="text-2xl font-semibold mb-4">Weather Map</h2>
+          <h2 className="text-2xl font-semibold mb-4">Global Threat Index</h2>
         </div>
         <div className="aspect-video bg-accent">
-          {/* Weather map content */}
+          <img src="/map.jpg" alt="Global Threat Index" width={3000} height={5000} />
+          <img src="/map.jpg" alt="Global Threat Index" width={3000} height={5000} />
         </div>
       </section>
     </div>

@@ -63,7 +63,7 @@ const ProductsSection = () => {
     return (
         <div className="h-full flex flex-col">
             <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-semibold">Products Section</h2>
+                <h2 className="text-2xl font-semibold">Products</h2>
                 <Link 
                     href="/add-product"
                     className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90"

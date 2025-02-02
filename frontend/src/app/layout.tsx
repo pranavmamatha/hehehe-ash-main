@@ -33,12 +33,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <div className="flex items-center justify-between h-16">
                   <div className="flex items-center space-x-8">
                     <Link href="/" className="text-xl font-semibold">
-                      Dashboard
+                      CyberHype
                     </Link>
                     <div className="hidden md:flex items-center space-x-4">
                       <Link href="/" className="nav-link">Home</Link>
-                      <Link href="/about" className="nav-link">About</Link>
-                      <Link href="/add-product" className="nav-link">New Product</Link>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4">
