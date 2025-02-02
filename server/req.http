@@ -1,0 +1,188 @@
+### Environment Variables
+@baseUrl = http://localhost:3001/api
+@token = your_jwt_token_here
+
+### Health Check
+GET {{baseUrl}}/health
+Content-Type: application/json
+
+### Authentication Routes
+
+# Register new user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "testpassword"
+}
+
+# Login user
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "testpassword"
+}
+
+# Logout user
+POST {{baseUrl}}/auth/logout
+Content-Type: application/json
+Cookie: token={{token}}
+
+# Update user tags
+PUT {{baseUrl}}/auth/tags
+Content-Type: application/json
+Cookie: token={{token}}
+
+{
+    "tags": ["web", "security", "cloud"]
+}
+
+# Get user tags
+GET {{baseUrl}}/auth/tags
+Cookie: token={{token}}
+
+### News Routes
+
+# Get all threat news
+GET {{baseUrl}}/news
+Cookie: token={{token}}
+
+### Chat Routes
+
+# Send chat message
+POST {{baseUrl}}/chat
+Content-Type: application/json
+Cookie: token={{token}}
+
+{
+    "message": "What are the recent security threats?"
+}
+
+### Product Routes
+
+# Create new product
+POST {{baseUrl}}/products
+Content-Type: application/json
+Cookie: token={{token}}
+
+{
+    "name": "My Web App",
+    "description": "A secure web application",
+    "technologies": ["Node.js", "React", "MongoDB"],
+    "tags": ["web", "database", "api"]
+}
+
+# Get all products
+GET {{baseUrl}}/products
+Cookie: token={{token}}
+
+# Get product by ID
+GET {{baseUrl}}/products/:id
+Cookie: token={{token}}
+
+# Update product
+PUT {{baseUrl}}/products/:id
+Content-Type: application/json
+Cookie: token={{token}}
+
+{
+    "name": "Updated Web App",
+    "technologies": ["Node.js", "React", "MongoDB", "Redis"]
+}
+
+# Delete product
+DELETE {{baseUrl}}/products/:id
+Cookie: token={{token}}
+
+# Get product status
+GET {{baseUrl}}/products/:id/status
+Cookie: token={{token}}
+
+# Update threat status
+PUT {{baseUrl}}/products/:id/threat/:threatId
+Content-Type: application/json
+Cookie: token={{token}}
+
+{
+    "status": "reviewed"
+}
+
+# Get product chat
+POST {{baseUrl}}/products/:id/chat
+Content-Type: application/json
+Cookie: token={{token}}
+
+{
+    "message": "What are the security risks for this product?"
+}
+
+###
+# API Documentation
+
+## Authentication
+- POST /auth/register: Register new user
+  - Body: { username, password }
+  - Returns: JWT token in cookie
+
+- POST /auth/login: Login user
+  - Body: { username, password }
+  - Returns: JWT token in cookie
+
+- POST /auth/logout: Logout user
+  - Requires: Authentication
+  - Clears token cookie
+
+## News
+- GET /news: Get all threat news
+  - Requires: Authentication
+  - Returns: Array of news items
+
+## Chat
+- POST /chat: Send chat message
+  - Requires: Authentication
+  - Body: { message }
+  - Returns: AI response
+
+## Products
+- POST /products: Create product
+  - Requires: Authentication
+  - Body: { name, description, technologies, tags }
+
+- GET /products: Get all products
+  - Requires: Authentication
+  - Returns: Array of products
+
+- GET /products/:id: Get single product
+  - Requires: Authentication
+  - Returns: Product details
+
+- PUT /products/:id: Update product
+  - Requires: Authentication
+  - Body: Updated product fields
+
+- DELETE /products/:id: Delete product
+  - Requires: Authentication
+
+- GET /products/:id/status: Get product threat status
+  - Requires: Authentication
+  - Returns: Threat summary
+
+- PUT /products/:id/threat/:threatId: Update threat status
+  - Requires: Authentication
+  - Body: { status }
+
+- POST /products/:id/chat: Get product-specific chat
+  - Requires: Authentication
+  - Body: { message }
+  - Returns: AI response
+
+## Error Responses
+All endpoints return errors in format:
+{
+    "success": false,
+    "message": "Error description",
+    "error": "Detailed error info"
+} 
